@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Космическое портфолио</title>
+  <style>
+    /* Сброс стилей */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* Основные стили */
+    body {
+      background-color: #0a0a1a;
+      color: #fff;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Космический фон */
+    #space {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    /* Навигация */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      z-index: 100;
+      background: rgba(10, 10, 26, 0.7);
+      backdrop-filter: blur(5px);
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #6e45e2;
+    }
+
+    /* Герой-секция */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #6e45e2, #88d3ce);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      max-width: 700px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background: linear-gradient(90deg, #6e45e2, #88d3ce);
+      color: #fff;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(110, 69, 226, 0.3);
+    }
+
+    /* Секции */
+    section {
+      padding: 100px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      text-align: center;
+      background: linear-gradient(90deg, #6e45e2, #88d3ce);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* О себе */
+    .about {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .about-img {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #6e45e2, #88d3ce);
+      padding: 5px;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .about-img img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #0a0a1a;
+    }
+
+    .about-content {
+      max-width: 600px;
+    }
+
+    .skills {
+      margin-top: 30px;
+    }
+
+    .skill {
+      margin-bottom: 20px;
+    }
+
+    .skill-name {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .skill-bar {
+      height: 10px;
+      background: #1a1a2e;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .skill-progress {
+      height: 100%;
+      background: linear-gradient(90deg, #6e45e2, #88d3ce);
+      border-radius: 5px;
+      width: 0;
+      transition: width 2s ease;
+    }
+
+    /* Портфолио */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .portfolio-item {
+      background: #1a1a2e;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .portfolio-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(110, 69, 226, 0.3);
+    }
+
+    .portfolio-img {
+      height: 200px;
+      background: linear-gradient(145deg, #6e45e2, #88d3ce);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 2rem;
+    }
+
+    .portfolio-info {
+      padding: 20px;
+    }
+
+    /* Контакты */
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      background: #1a1a2e;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+    }
+
+    .form-group textarea {
+      height: 150px;
+      resize: vertical;
+    }
+
+    /* Футер */
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #1a1a2e;
+    }
+
+    /* Анимации */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
+    }
+
+    @keyframes twinkle {
+      0% { opacity: 0.2; }
+      50% { opacity: 1; }
+      100% { opacity: 0.2; }
+    }
+
+    /* Адаптив */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+      }
+
+      section {
+        padding: 70px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Космический фон -->
+  <canvas id="space"></canvas>
+
+  <!-- Навигация -->
+  <nav>
+    <div class="logo">Космическое портфолио</div>
+    <div class="links">
+      <a href="#about">Обо мне</a>
+      <a href="#skills">Навыки</a>
+      <a href="#portfolio">Портфолио</a>
+      <a href="#contact">Контакты</a>
+    </div>
+  </nav>
+
+  <!-- Герой-секция -->
+  <section class="hero">
+    <h1>Привет, я космический энтузиаст</h1>
+    <p>Изучаю программирование и создаю интересные проекты на Python, HTML, PHP и Pawno</p>
+    <a href="#about" class="btn">Узнать больше</a>
+  </section>
+
+  <!-- О себе -->
+  <section id="about">
+    <h2>Обо мне</h2>
+    <div class="about">
+      <div class="about-img">
+        <img src="https://via.placeholder.com/300" alt="Мое фото">
+      </div>
+      <div class="about-content">
+        <p>Привет! Я увлекаюсь программированием и создаю различные проекты в свободное время. Мне нравится изучать новые технологии и применять их на практике.</p>
+        <p>Хотя я еще не профессиональный разработчик, я активно развиваюсь в этом направлении и с каждым днем становлюсь лучше.</p>
+        <div class="skills" id="skills">
+          <h3>Мои навыки</h3>
+          <div class="skill">
+            <div class="skill-name">
+              <span>Python</span>
+              <span>70%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="70%"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <div class="skill-name">
+              <span>HTML/CSS</span>
+              <span>80%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="80%"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <div class="skill-name">
+              <span>PHP</span>
+              <span>50%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="50%"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <div class="skill-name">
+              <span>Pawno</span>
+              <span>60%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="60%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Портфолио -->
+  <section id="portfolio">
+    <h2>Мои проекты</h2>
+    <div class="portfolio-grid">
+      <div class="portfolio-item">
+        <div class="portfolio-img">Python</div>
+        <div class="portfolio-info">
+          <h3>Телеграм-бот</h3>
+          <p>Бот для автоматизации задач с использованием Python и aiogram</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <div class="portfolio-img">HTML</div>
+        <div class="portfolio-info">
+          <h3>Личный сайт</h3>
+          <p>Адаптивный лендинг с CSS-анимациями</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <div class="portfolio-img">PHP</div>
+        <div class="portfolio-info">
+          <h3>Форум</h3>
+          <p>Простой форум с регистрацией пользователей</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Контакты -->
+  <section id="contact">
+    <h2>Свяжитесь со мной</h2>
+    <div class="contact-form">
+      <form id="form">
+        <div class="form-group">
+          <label for="name">Имя</label>
+          <input type="text" id="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Сообщение</label>
+          <textarea id="message" required></textarea>
+        </div>
+        <button type="submit" class="btn">Отправить</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Футер -->
+  <footer>
+    <p>© 2023 Космическое портфолио | Все права защищены</p>
+  </footer>
+
+  <!-- Скрипты -->
+  <script>
+    // Космический фон
+    const canvas = document.getElementById('space');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // Звезды
+    const stars = [];
+    const starCount = 200;
+
+    for (let i = 0; i < starCount; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 1.5,
+        speed: Math.random() * 0.2,
+        opacity: Math.random()
+      });
+    }
+
+    function drawStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+        ctx.fill();
+        
+        star.y += star.speed;
+        
+        if (star.y > canvas.height) {
+          star.y = 0;
+          star.x = Math.random() * canvas.width;
+        }
+        
+        // Мерцание звезд
+        if (Math.random() > 0.95) {
+          star.opacity = Math.random();
+        }
+      });
+      
+      requestAnimationFrame(drawStars);
+    }
+
+    drawStars();
+
+    // Анимация прогресс-баров
+    document.querySelectorAll('.skill-progress').forEach(bar => {
+      const width = bar.getAttribute('data-width');
+      setTimeout(() => {
+        bar.style.width = width;
+      }, 500);
+    });
+
+    // Плавная прокрутка
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Обработка формы
+    document.getElementById('form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Сообщение отправлено! (Это демо, данные никуда не отправляются)');
+      this.reset();
+    });
+
+    // Адаптивность
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+</body>
+</html>
