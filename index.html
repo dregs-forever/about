@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>dregs_forever | Портфолио</title>
+  <title>dregs_forever | ✨</title>
   <style>
-    /* Сброс стилей и базовые настройки */
+    /* Стили для фембойного портфолио */
     * {
       margin: 0;
       padding: 0;
@@ -13,75 +13,69 @@
     }
     
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to bottom, #2a0845, #1a1a2e);
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #3a0ca3, #7209b7, #f72585);
       color: white;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      overflow-x: hidden;
+      overflow: hidden;
+      position: relative;
     }
     
-    /* Основной контейнер */
     .container {
       max-width: 800px;
       margin: 0 auto;
       padding: 40px 20px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
       position: relative;
-      z-index: 1;
+      z-index: 10;
+      backdrop-filter: blur(5px);
     }
     
-    /* Заголовок */
     .header {
       text-align: center;
       margin-bottom: 50px;
-      animation: fadeIn 1s ease-out;
+      animation: fadeIn 1.5s ease-out;
     }
     
     .header h1 {
-      font-size: 2.5rem;
+      font-size: 3rem;
       margin-bottom: 10px;
-      background: linear-gradient(90deg, #8e2de2, #4a00e0);
+      background: linear-gradient(90deg, #fff, #ffccff);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      text-shadow: 0 0 10px rgba(255, 204, 255, 0.3);
     }
     
     .header p {
-      font-size: 1.2rem;
-      opacity: 0.8;
+      font-size: 1.3rem;
+      opacity: 0.9;
     }
     
-    /* Блок контактов */
     .contacts {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 25px;
       max-width: 500px;
       margin: 0 auto;
       animation: slideUp 1s ease-out;
     }
     
     .contact-item {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
       padding: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      transition: all 0.3s ease;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: all 0.4s ease;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
     
     .contact-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-8px);
+      background: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 12px 40px rgba(247, 37, 133, 0.3);
     }
     
     .contact-info {
@@ -91,93 +85,114 @@
     
     .contact-label {
       font-size: 0.9rem;
-      opacity: 0.7;
+      opacity: 0.8;
       margin-bottom: 5px;
     }
     
     .contact-value {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-weight: 500;
     }
     
     .copy-btn {
-      background: linear-gradient(45deg, #8e2de2, #4a00e0);
+      background: rgba(255, 255, 255, 0.2);
       border: none;
       color: white;
-      width: 40px;
-      height: 40px;
+      width: 45px;
+      height: 45px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       transition: all 0.3s ease;
+      font-size: 1.2rem;
+      backdrop-filter: blur(5px);
     }
     
     .copy-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 15px rgba(142, 45, 226, 0.5);
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.1) rotate(10deg);
     }
     
     .copy-btn.copied {
-      background: linear-gradient(45deg, #00b09b, #96c93d);
-    }
-    
-    /* Звездное небо */
-    .stars {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 150px;
-      z-index: 0;
+      background: #4cc9f0;
+      transform: scale(0.9);
     }
     
     /* Анимации */
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     
     @keyframes slideUp {
-      from { 
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to { 
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     
     @keyframes twinkle {
-      0%, 100% { opacity: 0.2; }
+      0%, 100% { opacity: 0.3; }
       50% { opacity: 1; }
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    /* Пасхалка */
+    .easter-egg {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 100;
+      transition: all 0.3s ease;
+    }
+    
+    .easter-egg:hover {
+      background: rgba(247, 37, 133, 0.3);
+      transform: scale(1.1);
+    }
+    
+    .easter-egg span {
+      font-size: 1.5rem;
+      animation: float 3s ease-in-out infinite;
     }
     
     /* Адаптивность */
     @media (max-width: 600px) {
       .header h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
       }
       
       .contact-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
+        padding: 15px;
       }
       
-      .copy-btn {
-        align-self: flex-end;
+      .contact-value {
+        font-size: 1.1rem;
       }
     }
   </style>
 </head>
 <body>
+  <!-- Звёздный фон (будет через canvas) -->
+  <canvas id="starfield"></canvas>
+  
   <div class="container">
     <div class="header">
       <h1>dregs_forever</h1>
-      <p>Python | HTML | PHP | Pawno</p>
+      <p>Python | HTML | PHP | Pawno | ✨</p>
     </div>
     
     <div class="contacts">
@@ -189,7 +204,7 @@
         <button class="copy-btn" onclick="copyToClipboard('ffv24155@gmail.com', this)">📋</button>
       </div>
       
-      <div class="contact-item">
+      <div class="contact-item" onclick="window.open('https://t.me/dregs_forever', '_blank')">
         <div class="contact-info">
           <span class="contact-label">Telegram</span>
           <span class="contact-value">@dregs_forever</span>
@@ -207,13 +222,73 @@
     </div>
   </div>
   
-  <canvas class="stars" id="stars"></canvas>
+  <!-- Пасхалка -->
+  <div class="easter-egg" onclick="revealEasterEgg()">
+    <span>🌸</span>
+  </div>
   
   <script>
-    // Функция копирования в буфер обмена
+    // Инициализация звёздного неба
+    const canvas = document.getElementById('starfield');
+    const ctx = canvas.getContext('2d');
+    
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    // Создание звёзд
+    const stars = [];
+    const starCount = 300;
+    
+    for (let i = 0; i < starCount; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 1.5,
+        speed: Math.random() * 0.5,
+        opacity: Math.random() * 0.8 + 0.2,
+        twinkleSpeed: Math.random() * 0.05 + 0.01
+      });
+    }
+    
+    // Анимация звёзд
+    function animateStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        
+        // Мерцание
+        star.opacity += star.twinkleSpeed;
+        if (star.opacity > 1 || star.opacity < 0.2) {
+          star.twinkleSpeed = -star.twinkleSpeed;
+        }
+        
+        ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+        ctx.fill();
+        
+        // Движение
+        star.y += star.speed;
+        if (star.y > canvas.height) {
+          star.y = 0;
+          star.x = Math.random() * canvas.width;
+        }
+      });
+      
+      requestAnimationFrame(animateStars);
+    }
+    
+    animateStars();
+    
+    // Обработка ресайза
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+    
+    // Функция копирования
     function copyToClipboard(text, button) {
       navigator.clipboard.writeText(text).then(() => {
-        // Визуальная обратная связь
         button.innerHTML = '✓';
         button.classList.add('copied');
         
@@ -221,78 +296,57 @@
           button.innerHTML = '📋';
           button.classList.remove('copied');
         }, 2000);
-      }).catch(err => {
-        console.error('Ошибка копирования: ', err);
       });
     }
     
-    // Звездное небо
-    const canvas = document.getElementById('stars');
-    const ctx = canvas.getContext('2d');
-    
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = 150;
-    }
-    
-    function initStars() {
-      resizeCanvas();
+    // Пасхалка
+    function revealEasterEgg() {
+      const colors = ['#ffccff', '#ffb6ff', '#ff9eff', '#ff85ff', '#ff6eff'];
+      let currentIndex = 0;
       
-      const stars = [];
-      const starCount = Math.floor(canvas.width / 5);
+      document.body.style.transition = 'background 0.5s ease';
       
-      for (let i = 0; i < starCount; i++) {
-        stars.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          radius: Math.random() * 1.5,
-          speed: 0.2 + Math.random() * 0.5,
-          opacity: 0.1 + Math.random() * 0.9
-        });
-      }
+      const interval = setInterval(() => {
+        document.body.style.background = `linear-gradient(135deg, ${colors[currentIndex]}, ${colors[(currentIndex + 2) % colors.length]})`;
+        currentIndex = (currentIndex + 1) % colors.length;
+      }, 300);
       
-      function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      setTimeout(() => {
+        clearInterval(interval);
+        document.body.style.background = 'linear-gradient(135deg, #3a0ca3, #7209b7, #f72585)';
         
-        stars.forEach(star => {
-          ctx.beginPath();
-          ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
-          ctx.fill();
-          
-          star.x -= star.speed;
-          
-          if (star.x < 0) {
-            star.x = canvas.width;
-            star.y = Math.random() * canvas.height;
-          }
-          
-          // Мерцание звезд
-          if (Math.random() > 0.95) {
-            star.opacity = 0.1 + Math.random() * 0.9;
-          }
-        });
-        
-        requestAnimationFrame(animate);
-      }
-      
-      animate();
-    }
-    
-    // Инициализация
-    window.addEventListener('load', initStars);
-    window.addEventListener('resize', () => {
-      resizeCanvas();
-    });
-    
-    // Открытие Telegram при клике на контакт
-    document.querySelectorAll('.contact-item:nth-child(2)').forEach(item => {
-      item.addEventListener('click', (e) => {
-        if (!e.target.classList.contains('copy-btn')) {
-          window.open('https://t.me/dregs_forever', '_blank');
+        // Создаём сердечки
+        for (let i = 0; i < 30; i++) {
+          createHeart();
         }
-      });
-    });
+      }, 3000);
+    }
+    
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.innerHTML = '💖';
+      heart.style.position = 'fixed';
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.top = window.innerHeight + 'px';
+      heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+      heart.style.opacity = '0';
+      heart.style.transition = 'all 1s ease-out';
+      heart.style.zIndex = '100';
+      
+      document.body.appendChild(heart);
+      
+      setTimeout(() => {
+        heart.style.opacity = '1';
+        heart.style.top = (Math.random() * window.innerHeight * 0.5) + 'px';
+      }, 10);
+      
+      setTimeout(() => {
+        heart.style.opacity = '0';
+        setTimeout(() => {
+          heart.remove();
+        }, 1000);
+      }, 2000);
+    }
   </script>
 </body>
 </html>
