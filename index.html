@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>dregs_forever | ✨</title>
+  <title>dregs_forever | Портфолио</title>
   <style>
-    /* Стили для фембойного портфолио */
     * {
       margin: 0;
       padding: 0;
@@ -17,7 +16,7 @@
       background: linear-gradient(135deg, #3a0ca3, #7209b7, #f72585);
       color: white;
       min-height: 100vh;
-      overflow: hidden;
+      overflow-x: hidden;
       position: relative;
     }
     
@@ -27,13 +26,12 @@
       padding: 40px 20px;
       position: relative;
       z-index: 10;
-      backdrop-filter: blur(5px);
     }
     
     .header {
       text-align: center;
       margin-bottom: 50px;
-      animation: fadeIn 1.5s ease-out;
+      animation: fadeIn 1s ease-out;
     }
     
     .header h1 {
@@ -43,7 +41,6 @@
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      text-shadow: 0 0 10px rgba(255, 204, 255, 0.3);
     }
     
     .header p {
@@ -67,15 +64,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      transition: all 0.4s ease;
+      transition: all 0.3s ease;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
     
     .contact-item:hover {
-      transform: translateY(-8px);
+      transform: translateY(-5px);
       background: rgba(255, 255, 255, 0.25);
-      box-shadow: 0 12px 40px rgba(247, 37, 133, 0.3);
     }
     
     .contact-info {
@@ -107,39 +103,36 @@
       cursor: pointer;
       transition: all 0.3s ease;
       font-size: 1.2rem;
-      backdrop-filter: blur(5px);
     }
     
     .copy-btn:hover {
       background: rgba(255, 255, 255, 0.3);
-      transform: scale(1.1) rotate(10deg);
+      transform: scale(1.1);
     }
     
     .copy-btn.copied {
       background: #4cc9f0;
-      transform: scale(0.9);
+    }
+    
+    /* Звёздный фон */
+    #starfield {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
     }
     
     /* Анимации */
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
     
     @keyframes slideUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
-    }
-    
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 1; }
-    }
-    
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-15px); }
-      100% { transform: translateY(0px); }
     }
     
     /* Пасхалка */
@@ -161,12 +154,10 @@
     
     .easter-egg:hover {
       background: rgba(247, 37, 133, 0.3);
-      transform: scale(1.1);
     }
     
     .easter-egg span {
       font-size: 1.5rem;
-      animation: float 3s ease-in-out infinite;
     }
     
     /* Адаптивность */
@@ -186,13 +177,13 @@
   </style>
 </head>
 <body>
-  <!-- Звёздный фон (будет через canvas) -->
+  <!-- Звёздный фон -->
   <canvas id="starfield"></canvas>
   
   <div class="container">
     <div class="header">
       <h1>dregs_forever</h1>
-      <p>Python | HTML | PHP | Pawno | ✨</p>
+      <p>Python | HTML | PHP | Pawno</p>
     </div>
     
     <div class="contacts">
@@ -245,8 +236,7 @@
         y: Math.random() * canvas.height,
         radius: Math.random() * 1.5,
         speed: Math.random() * 0.5,
-        opacity: Math.random() * 0.8 + 0.2,
-        twinkleSpeed: Math.random() * 0.05 + 0.01
+        opacity: Math.random() * 0.8 + 0.2
       });
     }
     
@@ -257,17 +247,9 @@
       stars.forEach(star => {
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-        
-        // Мерцание
-        star.opacity += star.twinkleSpeed;
-        if (star.opacity > 1 || star.opacity < 0.2) {
-          star.twinkleSpeed = -star.twinkleSpeed;
-        }
-        
         ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
         ctx.fill();
         
-        // Движение
         star.y += star.speed;
         if (star.y > canvas.height) {
           star.y = 0;
@@ -301,51 +283,7 @@
     
     // Пасхалка
     function revealEasterEgg() {
-      const colors = ['#ffccff', '#ffb6ff', '#ff9eff', '#ff85ff', '#ff6eff'];
-      let currentIndex = 0;
-      
-      document.body.style.transition = 'background 0.5s ease';
-      
-      const interval = setInterval(() => {
-        document.body.style.background = `linear-gradient(135deg, ${colors[currentIndex]}, ${colors[(currentIndex + 2) % colors.length]})`;
-        currentIndex = (currentIndex + 1) % colors.length;
-      }, 300);
-      
-      setTimeout(() => {
-        clearInterval(interval);
-        document.body.style.background = 'linear-gradient(135deg, #3a0ca3, #7209b7, #f72585)';
-        
-        // Создаём сердечки
-        for (let i = 0; i < 30; i++) {
-          createHeart();
-        }
-      }, 3000);
-    }
-    
-    function createHeart() {
-      const heart = document.createElement('div');
-      heart.innerHTML = '💖';
-      heart.style.position = 'fixed';
-      heart.style.left = Math.random() * window.innerWidth + 'px';
-      heart.style.top = window.innerHeight + 'px';
-      heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
-      heart.style.opacity = '0';
-      heart.style.transition = 'all 1s ease-out';
-      heart.style.zIndex = '100';
-      
-      document.body.appendChild(heart);
-      
-      setTimeout(() => {
-        heart.style.opacity = '1';
-        heart.style.top = (Math.random() * window.innerHeight * 0.5) + 'px';
-      }, 10);
-      
-      setTimeout(() => {
-        heart.style.opacity = '0';
-        setTimeout(() => {
-          heart.remove();
-        }, 1000);
-      }, 2000);
+      alert();
     }
   </script>
 </body>
