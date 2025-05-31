@@ -3,299 +3,295 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Портфолио</title>
+  <title>dregs_forever | Портфолио</title>
   <style>
+    /* Сброс стилей и базовые настройки */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Arial', sans-serif;
     }
-
+    
     body {
-      background-color: #0a0a1a;
-      color: #fff;
-      line-height: 1.6;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #2a0845, #1a1a2e);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
     }
-
-    #space {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
-
+    
+    /* Основной контейнер */
     .container {
       max-width: 800px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 40px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
     }
-
-    header {
-      padding: 40px 0;
+    
+    /* Заголовок */
+    .header {
       text-align: center;
+      margin-bottom: 50px;
+      animation: fadeIn 1s ease-out;
     }
-
-    h1 {
+    
+    .header h1 {
       font-size: 2.5rem;
       margin-bottom: 10px;
-      background: linear-gradient(90deg, #6e45e2, #88d3ce);
+      background: linear-gradient(90deg, #8e2de2, #4a00e0);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
-
-    .subtitle {
+    
+    .header p {
       font-size: 1.2rem;
       opacity: 0.8;
     }
-
-    section {
-      padding: 60px 0;
-    }
-
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 30px;
-      text-align: center;
-      background: linear-gradient(90deg, #6e45e2, #88d3ce);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .skills {
+    
+    /* Блок контактов */
+    .contacts {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 30px;
-    }
-
-    .skill {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 10px 20px;
-      border-radius: 20px;
-      backdrop-filter: blur(5px);
-    }
-
-    .contact-links {
-      display: flex;
-      justify-content: center;
+      flex-direction: column;
       gap: 20px;
-      margin-top: 30px;
-      flex-wrap: wrap;
+      max-width: 500px;
+      margin: 0 auto;
+      animation: slideUp 1s ease-out;
     }
-
-    .contact-link {
-      color: #fff;
-      text-decoration: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      background: rgba(110, 69, 226, 0.3);
+    
+    .contact-item {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .contact-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      background: rgba(255, 255, 255, 0.15);
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .contact-label {
+      font-size: 0.9rem;
+      opacity: 0.7;
+      margin-bottom: 5px;
+    }
+    
+    .contact-value {
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+    
+    .copy-btn {
+      background: linear-gradient(45deg, #8e2de2, #4a00e0);
+      border: none;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
-      gap: 8px;
-    }
-
-    .contact-link:hover {
-      background: rgba(110, 69, 226, 0.6);
-      transform: translateY(-3px);
-    }
-
-    .contact-link i {
-      font-style: normal;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px 0;
-      margin-top: 60px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .copy-btn {
-      background: none;
-      border: none;
-      color: #6e45e2;
+      justify-content: center;
       cursor: pointer;
-      margin-left: 5px;
+      transition: all 0.3s ease;
     }
-
+    
+    .copy-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px rgba(142, 45, 226, 0.5);
+    }
+    
+    .copy-btn.copied {
+      background: linear-gradient(45deg, #00b09b, #96c93d);
+    }
+    
+    /* Звездное небо */
+    .stars {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 150px;
+      z-index: 0;
+    }
+    
+    /* Анимации */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideUp {
+      from { 
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
     @keyframes twinkle {
-      0% { opacity: 0.2; }
+      0%, 100% { opacity: 0.2; }
       50% { opacity: 1; }
-      100% { opacity: 0.2; }
     }
-
+    
+    /* Адаптивность */
     @media (max-width: 600px) {
-      h1 {
+      .header h1 {
         font-size: 2rem;
       }
       
-      .subtitle {
-        font-size: 1rem;
+      .contact-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
       }
       
-      .contact-links {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
+      .copy-btn {
+        align-self: flex-end;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Космический фон -->
-  <canvas id="space"></canvas>
-
   <div class="container">
-    <header>
-      <h1>Моё портфолио</h1>
-      <p class="subtitle">Python | HTML | PHP | Pawno</p>
-    </header>
-
-    <section id="skills">
-      <h2>Навыки</h2>
-      <div class="skills">
-        <div class="skill">Python</div>
-        <div class="skill">HTML/CSS</div>
-        <div class="skill">PHP</div>
-        <div class="skill">Pawno</div>
+    <div class="header">
+      <h1>dregs_forever</h1>
+      <p>Python | HTML | PHP | Pawno</p>
+    </div>
+    
+    <div class="contacts">
+      <div class="contact-item">
+        <div class="contact-info">
+          <span class="contact-label">Email</span>
+          <span class="contact-value">ffv24155@gmail.com</span>
+        </div>
+        <button class="copy-btn" onclick="copyToClipboard('ffv24155@gmail.com', this)">📋</button>
       </div>
-    </section>
-
-    <section id="contact">
-      <h2>Контакты</h2>
-      <div class="contact-links">
-        <div class="contact-link" id="email-link">
-          <i>Email</i>
+      
+      <div class="contact-item">
+        <div class="contact-info">
+          <span class="contact-label">Telegram</span>
+          <span class="contact-value">@dregs_forever</span>
         </div>
-        <div class="contact-link" id="telegram-link">
-          <i>Telegram</i>
-        </div>
-        <div class="contact-link" id="discord-link">
-          <i>Discord</i>
-        </div>
+        <button class="copy-btn" onclick="copyToClipboard('@dregs_forever', this)">📋</button>
       </div>
-    </section>
-
-    <footer>
-      <p>© 2025</p>
-    </footer>
+      
+      <div class="contact-item">
+        <div class="contact-info">
+          <span class="contact-label">Discord</span>
+          <span class="contact-value">dregs_forever</span>
+        </div>
+        <button class="copy-btn" onclick="copyToClipboard('dregs_forever', this)">📋</button>
+      </div>
+    </div>
   </div>
-
+  
+  <canvas class="stars" id="stars"></canvas>
+  
   <script>
-    // Космический фон
-    const canvas = document.getElementById('space');
+    // Функция копирования в буфер обмена
+    function copyToClipboard(text, button) {
+      navigator.clipboard.writeText(text).then(() => {
+        // Визуальная обратная связь
+        button.innerHTML = '✓';
+        button.classList.add('copied');
+        
+        setTimeout(() => {
+          button.innerHTML = '📋';
+          button.classList.remove('copied');
+        }, 2000);
+      }).catch(err => {
+        console.error('Ошибка копирования: ', err);
+      });
+    }
+    
+    // Звездное небо
+    const canvas = document.getElementById('stars');
     const ctx = canvas.getContext('2d');
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    // Звезды
-    const stars = [];
-    const starCount = 150;
-
-    for (let i = 0; i < starCount; i++) {
-      stars.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 1.2,
-        speed: Math.random() * 0.15,
-        opacity: Math.random() * 0.5 + 0.5
-      });
-    }
-
-    function drawStars() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      stars.forEach(star => {
-        ctx.beginPath();
-        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
-        ctx.fill();
-        
-        star.y += star.speed;
-        
-        if (star.y > canvas.height) {
-          star.y = 0;
-          star.x = Math.random() * canvas.width;
-        }
-        
-        // Мерцание звезд
-        if (Math.random() > 0.97) {
-          star.opacity = Math.random() * 0.5 + 0.5;
-        }
-      });
-      
-      requestAnimationFrame(drawStars);
-    }
-
-    drawStars();
-
-    // Защита контактов
-    const contacts = {
-      email: ['ffv24155', 'gmail.com'],
-      telegram: 'dregs_forever',
-      discord: 'dregs_forever'
-    };
-
-    function revealContact(type) {
-      switch(type) {
-        case 'email':
-          const email = `${contacts.email[0]}@${contacts.email[1]}`;
-          const emailLink = document.getElementById('email-link');
-          emailLink.innerHTML = `<i>${email}</i><button class="copy-btn" onclick="navigator.clipboard.writeText('${email}')">📋</button>`;
-          emailLink.href = `mailto:${email}`;
-          emailLink.style.cursor = 'pointer';
-          break;
-          
-        case 'telegram':
-          const telegramLink = document.getElementById('telegram-link');
-          telegramLink.innerHTML = `<i>@${contacts.telegram}</i><button class="copy-btn" onclick="navigator.clipboard.writeText('@${contacts.telegram}')">📋</button>`;
-          telegramLink.href = `https://t.me/${contacts.telegram}`;
-          telegramLink.style.cursor = 'pointer';
-          telegramLink.target = '_blank';
-          break;
-          
-        case 'discord':
-          const discordLink = document.getElementById('discord-link');
-          discordLink.innerHTML = `<i>${contacts.discord}</i><button class="copy-btn" onclick="navigator.clipboard.writeText('${contacts.discord}')">📋</button>`;
-          discordLink.style.cursor = 'pointer';
-          break;
-      }
-    }
-
-    // Обработчики для раскрытия контактов
-    document.getElementById('email-link').addEventListener('click', function(e) {
-      if (!this.href) {
-        e.preventDefault();
-        revealContact('email');
-      }
-    });
-
-    document.getElementById('telegram-link').addEventListener('click', function(e) {
-      if (!this.href) {
-        e.preventDefault();
-        revealContact('telegram');
-      }
-    });
-
-    document.getElementById('discord-link').addEventListener('click', function(e) {
-      if (!this.innerHTML.includes(contacts.discord)) {
-        e.preventDefault();
-        revealContact('discord');
-      }
-    });
-
-    // Адаптивность
-    window.addEventListener('resize', () => {
+    
+    function resizeCanvas() {
       canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      canvas.height = 150;
+    }
+    
+    function initStars() {
+      resizeCanvas();
+      
+      const stars = [];
+      const starCount = Math.floor(canvas.width / 5);
+      
+      for (let i = 0; i < starCount; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 1.5,
+          speed: 0.2 + Math.random() * 0.5,
+          opacity: 0.1 + Math.random() * 0.9
+        });
+      }
+      
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        stars.forEach(star => {
+          ctx.beginPath();
+          ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+          ctx.fill();
+          
+          star.x -= star.speed;
+          
+          if (star.x < 0) {
+            star.x = canvas.width;
+            star.y = Math.random() * canvas.height;
+          }
+          
+          // Мерцание звезд
+          if (Math.random() > 0.95) {
+            star.opacity = 0.1 + Math.random() * 0.9;
+          }
+        });
+        
+        requestAnimationFrame(animate);
+      }
+      
+      animate();
+    }
+    
+    // Инициализация
+    window.addEventListener('load', initStars);
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+    });
+    
+    // Открытие Telegram при клике на контакт
+    document.querySelectorAll('.contact-item:nth-child(2)').forEach(item => {
+      item.addEventListener('click', (e) => {
+        if (!e.target.classList.contains('copy-btn')) {
+          window.open('https://t.me/dregs_forever', '_blank');
+        }
+      });
     });
   </script>
 </body>
