@@ -167,7 +167,6 @@
       font-size: 1.5rem;
     }
     
-    /* Летающие сердечки */
     .heart {
       position: fixed;
       pointer-events: none;
@@ -186,7 +185,6 @@
       }
     }
     
-    /* Адаптивность */
     @media (max-width: 600px) {
       .header h1 {
         font-size: 2.2rem;
@@ -203,7 +201,6 @@
   </style>
 </head>
 <body>
-  <!-- Звёздный фон -->
   <canvas id="starfield"></canvas>
   
   <div class="container">
@@ -239,22 +236,19 @@
     </div>
   </div>
   
-  <!-- Пасхалка -->
   <div class="easter-egg" onclick="revealEasterEgg()">
     <span>🌸</span>
   </div>
   
   <script>
-    // Инициализация звёздного неба
     const canvas = document.getElementById('starfield');
     const ctx = canvas.getContext('2d');
     
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     
-    // Создание звёзд
     const stars = [];
-    const starCount = 300;
+    const starCount = 500;
     
     for (let i = 0; i < starCount; i++) {
       stars.push({
@@ -267,7 +261,6 @@
       });
     }
     
-    // Анимация звёзд с мерцанием
     function animateStars() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
@@ -275,7 +268,6 @@
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
         
-        // Мерцание
         star.opacity += star.twinkleSpeed;
         if (star.opacity > 1 || star.opacity < 0.2) {
           star.twinkleSpeed = -star.twinkleSpeed;
@@ -284,7 +276,6 @@
         ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
         ctx.fill();
         
-        // Движение
         star.y += star.speed;
         if (star.y > canvas.height) {
           star.y = 0;
@@ -297,13 +288,11 @@
     
     animateStars();
     
-    // Обработка ресайза
     window.addEventListener('resize', () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     });
     
-    // Функция копирования
     function copyToClipboard(text, button) {
       navigator.clipboard.writeText(text).then(() => {
         button.innerHTML = '✓';
@@ -316,20 +305,16 @@
       });
     }
     
-    // Пасхалка с сердечками
     function revealEasterEgg() {
-      // Меняем фон
       document.body.style.background = 'linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb)';
       
-      // Создаём 30 летающих сердечек
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < 50; i++) {
         createHeart();
       }
       
-      // Возвращаем фон через 3 секунды
       setTimeout(() => {
         document.body.style.background = 'linear-gradient(135deg, #3a0ca3, #7209b7, #f72585)';
-      }, 3000);
+      }, 5000);
     }
     
     function createHeart() {
@@ -337,23 +322,19 @@
       heart.className = 'heart';
       heart.innerHTML = '💖';
       
-      // Случайная позиция внизу экрана
       heart.style.left = Math.random() * window.innerWidth + 'px';
       heart.style.top = window.innerHeight + 'px';
       
-      // Случайный размер
       const size = Math.random() * 30 + 20;
       heart.style.fontSize = size + 'px';
       
-      // Случайная задержка анимации
       heart.style.animationDelay = Math.random() * 2 + 's';
       
       document.body.appendChild(heart);
       
-      // Удаляем сердечко после анимации
       setTimeout(() => {
         heart.remove();
-      }, 4000);
+      }, 5000);
     }
   </script>
 </body>
